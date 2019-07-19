@@ -27,8 +27,6 @@ const HeroMediaComponent = styled.div`
 	}
 
 	img,
-	.duotone,
-	.duotone img,
 	.hero__media,
 	.hero__media img {
 		display: none;

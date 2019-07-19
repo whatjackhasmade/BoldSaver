@@ -7,7 +7,6 @@ import config from "../../../data/SiteConfig";
 
 import { device } from "../particles/MediaQueries";
 import { ThemeDefault } from "../particles/ThemeDefault";
-import Fonts from "../particles/Fonts";
 import SEO from "../particles/SEO";
 
 import Footer from "../organisms/footer/Footer";

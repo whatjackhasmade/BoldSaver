@@ -4,7 +4,7 @@ import { device } from "../../particles/MediaQueries";
 const HeroComponent = styled.section`
 	align-items: center;
 	display: flex;
-	height: 500px;
+	min-height: 400px;
 	justify-content: center;
 	min-height: ${props => props.height};
 	overflow: hidden;
@@ -19,12 +19,12 @@ const HeroComponent = styled.section`
 		height: auto;
 		left: 50%;
 		margin-left: -50vw;
-		min-height: 80vh;
+		min-height: 400px;
 		width: 100vw;
 	}
 
 	@media ${device.xs} {
-		min-height: 50vh;
+		min-height: 400px;
 	}
 
 	a {
@@ -86,7 +86,7 @@ const HeroComponent = styled.section`
 
 	.hero__wrapper {
 		margin: 0 auto;
-		max-width: 1506px;
+		max-width: 1526px;
 		padding: 0 20px;
 		width: 100%;
 

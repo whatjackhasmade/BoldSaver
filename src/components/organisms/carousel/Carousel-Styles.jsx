@@ -8,7 +8,7 @@ const CarouselComponent = styled.section`
 	cursor: grab;
 
 	.slick-dots {
-		bottom: -48px;
+		bottom: -80px;
 	}
 `;
 

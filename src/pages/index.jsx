@@ -22,8 +22,9 @@ const Index = () => {
 					strategic thinking models.
 				</p>
 			</Hero>
+			{/* <Grid /> */}
+			<Carousel />
 			<HR />
-			<Grid />
 			<Carousel />
 		</Base>
 	);

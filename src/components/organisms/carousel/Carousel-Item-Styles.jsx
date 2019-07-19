@@ -6,7 +6,7 @@ const CarouselItemComponent = styled.div`
 	flex-direction: column;
 	margin: 0 8px;
 	min-height: 246px;
-	padding: 16px 16px 40px;
+	padding: 16px 16px 24px;
 	position: relative;
 
 	background-color: #c4c4c4;
@@ -49,6 +49,7 @@ const CarouselItemComponent = styled.div`
 	h5,
 	h6 {
 		margin: 0 auto 8px;
+		text-transform: initial;
 	}
 
 	.carousel__item__content {

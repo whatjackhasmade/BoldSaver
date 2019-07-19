@@ -15,15 +15,16 @@ const settings = {
 	slidesToScroll: 1
 };
 
-const Carousel = () => {
+const Carousel = ({ items = [] }) => {
 	return (
 		<CarouselComponent>
 			<div className="carousel__contents">
 				<Slider {...settings}>
-					{[...Array(10)].map((x, i) => (
+					{items.map((item, i) => (
 						<CarouselItem
 							background={`https://source.unsplash.com/300x50${i}/?paris`}
 							key={`carousel-item-${i}`}
+							{...item}
 						/>
 					))}
 				</Slider>

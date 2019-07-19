@@ -7,7 +7,7 @@ import config from "../../../data/SiteConfig";
 
 import { device } from "../particles/MediaQueries";
 import { ThemeDefault } from "../particles/ThemeDefault";
-import SEO from "../particles/SEO";
+// import SEO from "../particles/SEO";
 
 import Footer from "../organisms/footer/Footer";
 import Header from "../organisms/header/Header";
@@ -294,7 +294,7 @@ const Base = ({ children, context, cta }) => {
 			<React.Fragment>
 				<GlobalStyle />
 				<Helmet title={config.siteTitle} />
-				<SEO data={context} />
+				{/* <SEO data={context} /> */}
 				<div className="wrapper">
 					<Header />
 					<main>{children}</main>

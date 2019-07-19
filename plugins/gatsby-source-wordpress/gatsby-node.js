@@ -29,3 +29,57 @@ exports.sourceNodes = async (
 		});
 	});
 };
+
+const createThePages = true;
+
+if (createThePages) {
+	exports.createPages = ({ graphql, actions }) => {
+		const { createPage } = actions;
+		return new Promise((resolve, reject) => {
+			graphql(`
+				{
+					allDeal {
+						edges {
+							node {
+								id
+								category
+								price
+								slug
+								title
+								url
+							}
+						}
+					}
+				}
+			`).then(result => {
+				let dealCategories = result.data.allDeal.edges.map(
+					({ node }) => node.category
+				);
+				dealCategories = [...new Set(dealCategories)];
+
+				dealCategories.forEach(deal => {
+					createPage({
+						path: `/category/${deal}`,
+						component: path.resolve(`./src/components/templates/Archive.jsx`),
+						context: {
+							query: deal,
+							title: deal,
+							type: `category`
+						}
+					});
+				});
+
+				result.data.allDeal.edges.forEach(({ node }) => {
+					createPage({
+						path: node.slug,
+						component: path.resolve(`./src/components/templates/Product.jsx`),
+						context: {
+							...node
+						}
+					});
+				});
+				resolve();
+			});
+		});
+	};
+}

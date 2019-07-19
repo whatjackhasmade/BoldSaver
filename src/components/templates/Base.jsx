@@ -20,90 +20,11 @@ if (typeof window !== "undefined") {
 }
 
 const GlobalStyle = createGlobalStyle`
-	@font-face {
-		font-family: 'SuisseIntl';
-		src: url(${Fonts.SuisseIntlRegularEOT}); /* IE9 Compat Modes */
-		src: url(${
-			Fonts.SuisseIntlRegularEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
-			url(${
-				Fonts.SuisseIntlRegularWOFF2
-			}) format('woff2'), /* Super Modern Browsers */
-			url(${Fonts.SuisseIntlRegularWOFF}) format('woff'), /* Pretty Modern Browsers */
-			url(${
-				Fonts.SuisseIntlRegularTTF
-			})  format('truetype'), /* Safari, Android, iOS */
-			url(${Fonts.SuisseIntlRegularSVG}) format('svg'); /* Legacy iOS */
-		font-style: normal;
-		font-weight: normal;
-	}
-
-		@font-face {
-		font-family: 'SuisseIntl';
-		src: url(${Fonts.SuisseIntlItalicEOT}); /* IE9 Compat Modes */
-		src: url(${
-			Fonts.SuisseIntlItalicEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
-			url(${Fonts.SuisseIntlItalicWOFF2}) format('woff2'), /* Super Modern Browsers */
-			url(${Fonts.SuisseIntlItalicWOFF}) format('woff'), /* Pretty Modern Browsers */
-			url(${
-				Fonts.SuisseIntlItalicTTF
-			})  format('truetype'), /* Safari, Android, iOS */
-			url(${Fonts.SuisseIntlItalicSVG}) format('svg'); /* Legacy iOS */
-		font-style: italic;
-		font-weight: normal;
-	}
-
-		@font-face {
-		font-family: 'SuisseIntl';
-		src: url(${Fonts.SuisseIntlMediumEOT}); /* IE9 Compat Modes */
-		src: url(${
-			Fonts.SuisseIntlMediumEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
-			url(${Fonts.SuisseIntlMediumWOFF2}) format('woff2'), /* Super Modern Browsers */
-			url(${Fonts.SuisseIntlMediumWOFF}) format('woff'), /* Pretty Modern Browsers */
-			url(${
-				Fonts.SuisseIntlMediumTTF
-			})  format('truetype'), /* Safari, Android, iOS */
-			url(${Fonts.SuisseIntlMediumSVG}) format('svg'); /* Legacy iOS */
-		font-style: normal;
-		font-weight: 500;
-	}
-
-
-	@font-face {
-		font-family: 'SuisseIntl';
-		src: url(${Fonts.SuisseIntlBoldEOT}); /* IE9 Compat Modes */
-		src: url(${
-			Fonts.SuisseIntlBoldEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
-			url(${Fonts.SuisseIntlBoldWOFF2}) format('woff2'), /* Super Modern Browsers */
-			url(${Fonts.SuisseIntlBoldWOFF}) format('woff'), /* Pretty Modern Browsers */
-			url(${Fonts.SuisseIntlBoldTTF})  format('truetype'), /* Safari, Android, iOS */
-			url(${Fonts.SuisseIntlBoldSVG}) format('svg'); /* Legacy iOS */
-		font-style: normal;
-		font-weight: bold;
-	}
-
-	@font-face {
-		font-family: 'SuisseIntl';
-		src: url(${Fonts.SuisseIntlBlackEOT}); /* IE9 Compat Modes */
-		src: url(${
-			Fonts.SuisseIntlBlackEOTIE
-		}) format('embedded-opentype'), /* IE6-IE8 */
-			url(${Fonts.SuisseIntlBlackWOFF2}) format('woff2'), /* Super Modern Browsers */
-			url(${Fonts.SuisseIntlBlackWOFF}) format('woff'), /* Pretty Modern Browsers */
-			url(${Fonts.SuisseIntlBlackTTF})  format('truetype'), /* Safari, Android, iOS */
-			url(${Fonts.SuisseIntlBlackSVG}) format('svg'); /* Legacy iOS */
-		font-style: normal;
-		font-weight: 900;
-	}
-
 	html {
 		box-sizing: border-box;
 		overflow-y: scroll;
 
-		font-family: 'SuisseIntl', Arial, Helvetica, sans-serif;
+		font-family: Arial, Helvetica, sans-serif;
 		font-size: 62.5%;
 		/* BETTER FONT SMOOTHING - https://gist.github.com/hsleonis/55712b0eafc9b25f1944 */
 		font-variant-ligatures: none;
@@ -138,7 +59,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	a {
-		color: ${props => props.theme.primary};
+		color: inherit;
 		text-decoration: none;
 
 		&:active,

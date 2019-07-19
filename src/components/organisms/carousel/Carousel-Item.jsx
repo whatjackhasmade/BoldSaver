@@ -13,10 +13,10 @@ const CarouselItem = ({
 	return (
 		<CarouselItemComponent background={background} className="carousel__item">
 			<Link to="/" className="carousel__item__content">
-				<Heading level="3" style="5">
+				<Heading level="3" visual="5">
 					{heading}
 				</Heading>
-				<Heading className="carousel__item__subheading" level="4" style="6">
+				<Heading className="carousel__item__subheading" level="4" visual="6">
 					{subheading}
 				</Heading>
 			</Link>

@@ -11,7 +11,7 @@ const Events = () => {
 	return (
 		<Base>
 			<Hero background={"PhotographMan"}>
-				<Heading level="1" style="2">
+				<Heading level="1" visual="2">
 					Event Deals
 				</Heading>
 				<p>

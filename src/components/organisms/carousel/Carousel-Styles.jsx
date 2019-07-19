@@ -7,6 +7,10 @@ const CarouselComponent = styled.section`
 
 	cursor: grab;
 
+	@media ${device.sm} {
+		margin: 80px 0 128px;
+	}
+
 	.slick-dots {
 		bottom: -80px;
 	}

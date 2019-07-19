@@ -17,6 +17,10 @@ const CarouselItemComponent = styled.div`
 	color: #fff;
 	text-align: center;
 
+	@media ${device.sm} {
+		margin: 0 8px;
+	}
+
 	&:before {
 		bottom: 0;
 		content: "";

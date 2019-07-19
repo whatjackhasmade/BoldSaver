@@ -7,8 +7,6 @@ import { GridItemComponent } from "./Grid-Styles";
 const Grid = ({ items = [] }) => {
 	if (!items.length > 0) return null;
 
-	const HTMLString = `<p>HTML String</p>`;
-
 	return (
 		<GridComponent>
 			{items.map((item, i) => (

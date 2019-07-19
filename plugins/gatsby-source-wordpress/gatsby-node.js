@@ -8,7 +8,7 @@ exports.sourceNodes = async (
 	{ actions: { createNode }, createNodeId },
 	{ plugins, ...options }
 ) => {
-	const techURL = `${APIDomain}?type=tech`;
+	const techURL = `${APIDomain}?category=tech`;
 	const techResponse = await fetch(techURL);
 	const techData = await techResponse.json();
 

@@ -23,7 +23,7 @@ const Index = () => {
 	return (
 		<Base>
 			<Hero background={PhotographMan}>
-				<Heading level="1" style="2">
+				<Heading level="1" visual="2">
 					Bold Bargains, Saving You Money
 				</Heading>
 				<p>

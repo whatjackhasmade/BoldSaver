@@ -7,13 +7,10 @@ const GridComponent = styled.section`
 `;
 
 const GridItemComponent = styled.div`
-	align-items: center;
+	align-items: flex-start;
 	display: flex;
+	flex-direction: column;
 	grid-column: span ${props => props.size};
-	justify-content: center;
-
-	background-color: hsl(${props => props.size * 10}, 100%, 50%);
-	color: ${props => props.theme.white};
 `;
 
 export { GridItemComponent };

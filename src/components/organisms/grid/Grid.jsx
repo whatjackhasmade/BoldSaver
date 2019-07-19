@@ -4,20 +4,28 @@ import parse from "html-react-parser";
 import GridComponent from "./Grid-Styles";
 import { GridItemComponent } from "./Grid-Styles";
 
-const HTMLString = `<p>HTML String</p>`;
+const Grid = ({ items = [] }) => {
+	if (!items.length > 0) return null;
 
-const Grid = () => {
+	const HTMLString = `<p>HTML String</p>`;
+
 	return (
 		<GridComponent>
-			{[...Array(10)].map((x, i) => (
-				<GridItem html={HTMLString} key={`grid-item-${i}`} size={i} />
+			{items.map((item, i) => (
+				<GridItem html={item.html} key={`grid-item-${i}`} size={item.size}>
+					{item.content}
+				</GridItem>
 			))}
 		</GridComponent>
 	);
 };
 
-const GridItem = ({ html, size }) => {
-	return <GridItemComponent size={size}>{parse(html)}</GridItemComponent>;
+const GridItem = ({ children, html, size }) => {
+	return (
+		<GridItemComponent size={size}>
+			{children ? children : parse(html)}
+		</GridItemComponent>
+	);
 };
 
 export default Grid;

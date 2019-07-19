@@ -10,6 +10,7 @@ const HRComponent = styled.hr`
 	background: none;
 	border: none;
 	border-top: 1px solid ${props => props.theme.grey200};
+	opacity: ${props => (props.invisible ? `0` : `1`)};
 
 	@media ${device.sm} {
 		margin: 32px auto;
@@ -28,8 +29,8 @@ const HRComponent = styled.hr`
 	}
 `;
 
-const HR = () => {
-	return <HRComponent />;
+const HR = props => {
+	return <HRComponent {...props} />;
 };
 
 export default HR;

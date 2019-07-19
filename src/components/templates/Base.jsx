@@ -19,6 +19,8 @@ if (typeof window !== "undefined") {
 }
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
+
 	html {
 		box-sizing: border-box;
 		overflow-y: scroll;
@@ -143,6 +145,7 @@ const GlobalStyle = createGlobalStyle`
 		line-height: 1.25;
 		margin: 16px 0;
 
+		font-family: 'Poppins', sans-serif;
 		font-weight: 700;
 		text-transform: capitalize;
 	}

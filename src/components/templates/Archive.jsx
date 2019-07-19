@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { graphql } from "gatsby";
 import { Link } from "gatsby";
 import styled from "styled-components";
@@ -14,6 +14,10 @@ import Heading from "../atoms/Heading";
 
 const ArchiveTemplateWrapper = styled.section`
 	margin: 64px 0;
+
+	input[type="range"] {
+		cursor: e-resize;
+	}
 
 	.archive__filters {
 		align-items: flex-start;
@@ -122,19 +126,9 @@ const spring = {
 const ArchiveTemplate = ({ data, pageContext }) => {
 	// const { category, price, title, url } = pageContext;
 
+	// TODO: Refactor state in favour of context
 	const [deals, setDeals] = useState(data.allDeal.nodes);
 	const [isFiltered, setFiltered] = useState(false);
-	const [maxPrice, setMaxPrice] = useState(100);
-	const [minPrice, setMinPrice] = useState(0);
-
-	const filterItems = () => {
-		setDeals(
-			isFiltered
-				? data.allDeal.nodes
-				: data.allDeal.nodes.filter((item, i) => i % 2)
-		);
-		setFiltered(!isFiltered);
-	};
 
 	return (
 		<Base context={pageContext}>
@@ -147,37 +141,12 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 						{deals.length} Deals Found
 					</Heading>
 				</header>
-				<nav className="archive__filters">
-					<FiSliders />
-					<nav className="archive__filters__min">
-						<input
-							id="minPrice"
-							name="minPrice"
-							type="range"
-							onChange={e => {
-								setMinPrice(e.target.value);
-							}}
-							value={minPrice}
-						/>
-						<label for="minPrice">Min Price: £{minPrice}</label>
-					</nav>
-					<nav className="archive__filters__max">
-						<input
-							id="maxPrice"
-							name="maxPrice"
-							type="range"
-							onChange={e => {
-								setMaxPrice(e.target.value);
-							}}
-							value={maxPrice}
-						/>
-						<label for="maxPrice">Max Price: £{maxPrice}</label>
-					</nav>
-					<Button onClick={filterItems} className="archive__filter">
-						Filter
-						<FiRefreshCw />
-					</Button>
-				</nav>
+				<Filters
+					data={data}
+					isFiltered={isFiltered}
+					setDeals={setDeals}
+					setFiltered={setFiltered}
+				/>
 				<section className="archive__items">
 					<AnimatePresence>
 						{deals.map((deal, i) => (
@@ -196,6 +165,60 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 				</section>
 			</ArchiveTemplateWrapper>
 		</Base>
+	);
+};
+
+const Filters = ({ data, isFiltered, setDeals, setFiltered }) => {
+	const mostExpensive = 999;
+	const leastExpensive = 0;
+	const [maxPrice, setMaxPrice] = useState(mostExpensive);
+	const [minPrice, setMinPrice] = useState(leastExpensive);
+
+	const filterItems = () => {
+		setDeals(
+			isFiltered
+				? data.allDeal.nodes
+				: data.allDeal.nodes.filter((item, i) => i % 2)
+		);
+		setFiltered(!isFiltered);
+	};
+
+	return (
+		<nav className="archive__filters">
+			<FiSliders />
+			<nav className="archive__filters__min">
+				<input
+					id="minPrice"
+					max={mostExpensive}
+					min={leastExpensive}
+					name="minPrice"
+					type="range"
+					onChange={e => {
+						setMinPrice(e.target.value);
+					}}
+					value={minPrice}
+				/>
+				<label for="minPrice">Min Price: £{minPrice}</label>
+			</nav>
+			<nav className="archive__filters__max">
+				<input
+					id="maxPrice"
+					max={mostExpensive}
+					min={leastExpensive}
+					name="maxPrice"
+					type="range"
+					onChange={e => {
+						setMaxPrice(e.target.value);
+					}}
+					value={maxPrice}
+				/>
+				<label for="maxPrice">Max Price: £{maxPrice}</label>
+			</nav>
+			<Button onClick={filterItems} className="archive__filter">
+				Filter
+				<FiRefreshCw />
+			</Button>
+		</nav>
 	);
 };
 

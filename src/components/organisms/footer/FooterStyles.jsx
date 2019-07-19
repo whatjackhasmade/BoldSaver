@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { device } from "../../particles/MediaQueries";
 
 const FooterComponent = styled.footer`
+	margin-top: 80px;
 	position: relative;
 	z-index: 10;
 

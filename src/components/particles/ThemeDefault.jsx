@@ -14,8 +14,8 @@ const ThemeDefault = {
 	grey900: "#0d0d0d",
 	black: "#141213",
 	blackAbsolute: "#000",
-	blue500: "#0652DD",
-	primary: "#0652DD",
+	yellow500: "#FEC100",
+	primary: "#FEC100",
 	secondary: "#3f51b5",
 	bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
 	fontSecondary:

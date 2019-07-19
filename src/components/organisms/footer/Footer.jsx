@@ -18,36 +18,45 @@ function Footer() {
 	return (
 		<FooterComponent>
 			<div className="footer__contents">
-				<nav className="footer__cta">
-					<a className="mailtoui" href="mailto:jack@noface.co.uk">
-						<div className="footer__arrow" />
-						<div className="footer__cta__content">
-							<span className="footer__tagline">
-								Always available for a chat
-							</span>
-							<span className="footer__name">Jack Pritchard</span>
-						</div>
-					</a>
-				</nav>
-				<nav className="footer__contact">
-					<a href="tel:07393 357520">07393 357520</a>
-					<a className="mailtoui" href="mailto:jack@noface.co.uk">
-						jack@noface.co.uk
-					</a>
-				</nav>
-				<nav className="footer__social">
-					<a href="https://twitter.com/whatjackhasmade">
-						<IconTwitter /> Twitter
-					</a>
-					<a href="https://github.com/whatjackhasmade">
-						<IconGithub /> Github
-					</a>
-					<a href="https://linkedin.com/in/whatjackhasmade">
-						<IconLinkedIn /> LinkedIn
-					</a>
-					<a href="https://youtube.com/whatjackhasmade">
-						<IconYouTube /> YouTube
-					</a>
+				<section className="footer__info">
+					<p>
+						BoldSaver is an easy way to get huge discounts while discovering fun
+						activities in your city. Our daily local deals consist of
+						restaurants, spas, hotels, massages, shopping vouchers, things to
+						do, and a whole lot more, in hundreds of cities across the world.
+						Discover the best gift ideas with BoldSaver: check out great deals
+						for Gifts for Him, Gifts for Her, Gifts for Couples, Birthday Gifts
+						and Affordable Gifts.
+					</p>
+					<nav className="footer__social">
+						<a href="https://twitter.com/whatjackhasmade">
+							<IconTwitter /> Twitter
+						</a>
+						<a href="https://github.com/whatjackhasmade">
+							<IconGithub /> Github
+						</a>
+						<a href="https://linkedin.com/in/whatjackhasmade">
+							<IconLinkedIn /> LinkedIn
+						</a>
+						<a href="https://youtube.com/whatjackhasmade">
+							<IconYouTube /> YouTube
+						</a>
+					</nav>
+				</section>
+				<nav className="footer__policies">
+					<span>
+						© 2019 BoldSaver, Website by{" "}
+						<a
+							href="https://noface.co.uk"
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							NoFace
+						</a>
+						.
+					</span>
+					<a href="/terms-and-conditions">Terms &amp; Conditions</a>
+					<a href="/privacy-policy">Privacy Policy</a>
 				</nav>
 			</div>
 		</FooterComponent>

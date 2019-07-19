@@ -10,7 +10,6 @@ import { ThemeDefault } from "../particles/ThemeDefault";
 import Fonts from "../particles/Fonts";
 import SEO from "../particles/SEO";
 
-import Contact from "../organisms/contact/Contact";
 import Footer from "../organisms/footer/Footer";
 import Header from "../organisms/header/Header";
 
@@ -379,7 +378,6 @@ const Base = ({ children, context, cta }) => {
 				<div className="wrapper">
 					<Header />
 					<main>{children}</main>
-					{cta !== false && <Contact />}
 					<Footer />
 				</div>
 			</React.Fragment>

@@ -5,7 +5,7 @@ const HeaderComponent = styled.header`
 	position: relative;
 	z-index: 11;
 
-	background: white;
+	background: ${props => props.theme.black};
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 
 	a {
@@ -31,40 +31,19 @@ const HeaderComponent = styled.header`
 		padding: 8px;
 		position: relative;
 
-		color: ${props => props.theme.grey600};
+		color: ${props => props.theme.white};
 		font-weight: 500;
-		letter-spacing: 1px;
 		text-decoration: none;
-		text-transform: uppercase;
-		transition: 0.2s alle ease;
+		text-transform: capitalize;
+		transition: 0.2s all ease;
 
 		& + a[aria-current="page"],
 		&:active,
 		&:focus,
 		&:hover {
 			box-shadow: none;
-			color: ${props => props.theme.black};
+			color: ${props => props.theme.grey100};
 			text-decoration: none;
-
-			&:after {
-				transform: scaleX(1);
-			}
-		}
-
-		@media ${device.sm} {
-			&:after {
-				bottom: -4px;
-				content: "";
-				display: block;
-				height: 1px;
-				left: 0;
-				position: absolute;
-				width: 100%;
-
-				background: ${props => props.theme.grey600};
-				transform: scaleX(0);
-				transition: 0.2s all ease;
-			}
 		}
 
 		+ a {
@@ -144,12 +123,7 @@ const HeaderComponent = styled.header`
 
 		svg {
 			display: block;
-			max-height: 50px;
-			width: 32px;
-
-			@media ${device.sm} {
-				width: 48px;
-			}
+			height: 20px;
 		}
 	}
 
@@ -178,6 +152,17 @@ const HeaderComponent = styled.header`
 		.header__menu--show {
 			left: 0;
 		}
+	}
+
+	.header__search {
+		height: 44px;
+		flex-grow: 1;
+		margin: 0 96px;
+		padding: 8px 16px;
+
+		background: ${props => props.theme.white};
+		border: none;
+		border-radius: 4px;
 	}
 `;
 

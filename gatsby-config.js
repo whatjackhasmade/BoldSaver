@@ -95,19 +95,19 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-robots-txt`,
 			options: {
-				host: `https://www.example.com`,
-				sitemap: `https://www.example.com/sitemap.xml`,
+				host: `https://www.noface.com`,
+				sitemap: `https://www.noface.com/sitemap.xml`,
 				resolveEnv: () => activeEnv,
 				env: {
 					development: {
-						policy: [{ userAgent: `*`, disallow: [`/`] }]
+						policy: [{ userAgent: `*`, disallow: [] }]
 					},
 					production: {
 						policy: [
 							{
 								userAgent: `*`,
 								allow: `/`,
-								disallow: [`/inspiration`, `/assets`, `/client/*`, `/twitter`]
+								disallow: []
 							}
 						]
 					}

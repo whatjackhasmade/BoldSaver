@@ -1,8 +1,11 @@
 import React from "react";
 
 import Heading from "../components/atoms/Heading";
+import HR from "../components/atoms/HR";
 
+import Carousel from "../components/organisms/carousel/Carousel";
 import Hero from "../components/organisms/hero/Hero";
+import Grid from "../components/organisms/grid/Grid";
 
 import Base from "../components/templates/Base";
 
@@ -10,7 +13,7 @@ const Index = () => {
 	return (
 		<Base>
 			<Hero>
-				<Heading level={1} style={2}>
+				<Heading level="1" style="2">
 					Bold Bargains, Saving You Money
 				</Heading>
 				<p>
@@ -19,6 +22,9 @@ const Index = () => {
 					strategic thinking models.
 				</p>
 			</Hero>
+			<HR />
+			<Grid />
+			<Carousel />
 		</Base>
 	);
 };

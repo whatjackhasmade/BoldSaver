@@ -77,6 +77,19 @@ const FooterComponent = styled.footer`
 		}
 	}
 
+	.footer__navigation {
+		align-items: flex-start;
+		display: flex;
+		flex-direction: column;
+		margin: 0 auto;
+
+		a {
+			+ a {
+				margin-top: 8px;
+			}
+		}
+	}
+
 	.footer__policies {
 		justify-content: flex-start;
 		margin-top: 32px;
@@ -90,7 +103,6 @@ const FooterComponent = styled.footer`
 
 	.footer__social {
 		justify-content: flex-start;
-		margin-left: auto;
 		width: 100%;
 
 		font-size: 0px;
@@ -110,7 +122,7 @@ const FooterComponent = styled.footer`
 		}
 
 		svg {
-			height: 48px;
+			width: 24px;
 		}
 	}
 `;

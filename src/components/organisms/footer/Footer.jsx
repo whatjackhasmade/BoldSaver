@@ -1,20 +1,13 @@
-import React, { useEffect } from "react";
-import MailtoUI from "mailtoui/dist/mailtoui-min.js";
+import React from "react";
+import { Link } from "gatsby";
 
 import FooterComponent from "./FooterStyles";
 
-import IconGithub from "../../../assets/images/icons/brands/github.svg";
-import IconLinkedIn from "../../../assets/images/icons/brands/linkedin.svg";
+import IconFacebook from "../../../assets/images/icons/brands/facebook.svg";
+import IconInstagram from "../../../assets/images/icons/brands/instagram.svg";
 import IconTwitter from "../../../assets/images/icons/brands/twitter.svg";
-import IconYouTube from "../../../assets/images/icons/brands/youtube.svg";
 
-function Footer() {
-	useEffect(() => {
-		if (typeof window !== `undefined`) {
-			MailtoUI.run(); // <--- Run MailtoUI manually
-		}
-	});
-
+const Footer = () => {
 	return (
 		<FooterComponent>
 			<div className="footer__contents">
@@ -28,18 +21,19 @@ function Footer() {
 						for Gifts for Him, Gifts for Her, Gifts for Couples, Birthday Gifts
 						and Affordable Gifts.
 					</p>
+					<nav className="footer__navigation">
+						<Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
+						<Link to="/privacy-policy">Privacy Policy</Link>
+					</nav>
 					<nav className="footer__social">
+						<a href="https://github.com/whatjackhasmade">
+							<IconFacebook /> Facebook
+						</a>
+						<a href="https://twitter.com/instagram">
+							<IconInstagram /> Instagram
+						</a>
 						<a href="https://twitter.com/whatjackhasmade">
 							<IconTwitter /> Twitter
-						</a>
-						<a href="https://github.com/whatjackhasmade">
-							<IconGithub /> Github
-						</a>
-						<a href="https://linkedin.com/in/whatjackhasmade">
-							<IconLinkedIn /> LinkedIn
-						</a>
-						<a href="https://youtube.com/whatjackhasmade">
-							<IconYouTube /> YouTube
 						</a>
 					</nav>
 				</section>
@@ -55,12 +49,12 @@ function Footer() {
 						</a>
 						.
 					</span>
-					<a href="/terms-and-conditions">Terms &amp; Conditions</a>
-					<a href="/privacy-policy">Privacy Policy</a>
+					<Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
+					<Link to="/privacy-policy">Privacy Policy</Link>
 				</nav>
 			</div>
 		</FooterComponent>
 	);
-}
+};
 
 export default Footer;

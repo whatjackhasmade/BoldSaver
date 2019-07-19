@@ -12,16 +12,24 @@ const HRComponent = styled.hr`
 	border-top: 1px solid ${props => props.theme.grey200};
 
 	@media ${device.sm} {
-		margin: 36px auto;
+		margin: 32px auto;
+	}
+
+	@media ${device.md} {
+		margin: 48px auto;
 	}
 
 	@media ${device.xl} {
-		margin: 48px auto;
+		margin: 64px auto;
+	}
+
+	@media ${device.xxl} {
+		margin: 80px auto;
 	}
 `;
 
-function HR() {
+const HR = () => {
 	return <HRComponent />;
-}
+};
 
 export default HR;

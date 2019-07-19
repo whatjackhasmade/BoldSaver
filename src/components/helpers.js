@@ -9,6 +9,19 @@ export function decodeHTML(html) {
 	});
 }
 
+export function formatMoney(amount) {
+	if (!amount) return null;
+	const options = {
+		style: "currency",
+		currency: "GBP",
+		minimumFractionDigits: 2
+	};
+	// if its a whole, dollar amount, leave off the .00
+	if (amount % 100 === 0) options.minimumFractionDigits = 0;
+	const formatter = new Intl.NumberFormat("en-UK", options);
+	return formatter.format(amount);
+}
+
 export function httpTohttps(html) {
 	return html.replace("http://", "https://");
 }

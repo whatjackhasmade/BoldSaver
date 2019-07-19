@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { formatMoney } from "../../helpers";
 
 import Heading from "../../atoms/Heading";
 
@@ -29,12 +30,7 @@ function truncate(str, len = 40, append) {
 	return tempString;
 }
 
-const CarouselItem = ({
-	background = "https://source.unsplash.com/300x500/?paris",
-	price = "£84/night average",
-	slug,
-	title = "title"
-}) => {
+const CarouselItem = ({ background, price, slug, title }) => {
 	return (
 		<CarouselItemComponent background={background} className="carousel__item">
 			<Link to={`/${slug}`} className="carousel__item__content">
@@ -42,7 +38,7 @@ const CarouselItem = ({
 					{truncate(title)}
 				</Heading>
 				<Heading className="carousel__item__subheading" level="4" visual="6">
-					{price}
+					{formatMoney(price)}
 				</Heading>
 			</Link>
 		</CarouselItemComponent>

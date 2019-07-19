@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { device } from "../particles/MediaQueries";
+import { formatMoney } from "../helpers";
 
 import Base from "./Base";
 
@@ -58,7 +59,7 @@ const ProductTemplate = ({ pageContext }) => {
 						{title}
 					</Heading>
 					<Heading level="2" visual="1">
-						{price}
+						{formatMoney(price)}
 					</Heading>
 				</header>
 				<Button href={url}>Claim Product</Button>

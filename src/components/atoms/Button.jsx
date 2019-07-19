@@ -48,6 +48,10 @@ const Btn = styled.button`
 			color: white;
 		}
 	}
+
+	svg {
+		margin-left: 8px;
+	}
 `;
 
 const Button = ({

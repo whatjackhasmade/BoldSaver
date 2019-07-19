@@ -119,7 +119,7 @@ const GlobalStyle = createGlobalStyle`
 		background-color: ${props => props.theme.primary};
 		border: none;
 		box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-		color: ${props => props.theme.white};
+		color: ${props => props.theme.black};
 		cursor: pointer;
 		font-weight: 700;
 		line-height: 1;
@@ -208,66 +208,6 @@ const GlobalStyle = createGlobalStyle`
 		@media ${device.lg} {
 			font-size: 18px;
 		}
-	}
-
-	code,
-	pre {
-		background: none;
-		color: ${props => props.theme.white};
-		font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-		font-size: 1em;
-		hyphens: none;
-		line-height: 1.5;
-		tab-size: 4;
-		text-align: left;
-		text-shadow: 0 -0.1em 0.2em ${props => props.theme.black};
-		white-space: pre;
-		word-break: normal;
-		word-spacing: normal;
-		word-wrap: normal;
-
-
-		::-webkit-scrollbar
-		{
-			background-color: ${props => props.theme.grey300};
-		}
-
-		::-webkit-scrollbar-thumb
-		{
-			background-color: ${props => props.theme.grey600};
-			border: 2px solid ${props => props.theme.grey600};
-		}
-	}
-
-	@media print {
-		code,
-		pre {
-			text-shadow: none;
-		}
-	}
-
-	pre,
-	:not(pre) > code {
-		background: ${props => props.theme.black};
-	}
-
-	/* Code blocks */
-	pre {
-		padding: 1em;
-		margin: 32px 0;
-		overflow: auto;
-		border: 0.3em solid ${props => props.theme.black};
-		border-radius: 0.5em;
-		box-shadow: 1px 1px 0.5em black inset;
-	}
-
-	/* Inline code */
-	:not(pre) > code {
-		padding: 0.15em 0.2em 0.05em;
-		border-radius: 0.3em;
-		border: 0.13em solid hsl(0, 0%, 11%);
-		box-shadow: none;
-		white-space: normal;
 	}
 
 	/* Slick Slider */

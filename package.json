@@ -62,6 +62,7 @@
 		"react-dom": "^16.8.6",
 		"react-grid-system": "^4.4.10",
 		"react-helmet": "^5.2.1",
+		"react-icons": "^3.7.0",
 		"react-image-webp": "^0.3.1",
 		"react-intersection-observer": "^8.24.1",
 		"react-lazy-load": "^3.0.13",

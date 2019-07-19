@@ -2,7 +2,8 @@ const fetch = require(`node-fetch`);
 const crypto = require(`crypto`);
 const path = require(`path`);
 
-const APIDomain = `https://boldsaver-api.herokuapp.com/`;
+// const APIDomain = `https://boldsaver-api.herokuapp.com/`
+const APIDomain = `http://localhost:5000/`;
 
 exports.sourceNodes = async (
 	{ actions: { createNode }, createNodeId },

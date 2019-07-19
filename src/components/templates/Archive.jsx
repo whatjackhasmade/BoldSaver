@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { device } from "../particles/MediaQueries";
+import { FiRefreshCw, FiSliders } from "react-icons/fi";
 
 import Base from "./Base";
 
@@ -109,6 +110,7 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 					</Heading>
 				</header>
 				<nav className="archive__filters">
+					<FiSliders />
 					<nav className="archive__filters__min">
 						<input
 							id="minPrice"
@@ -135,6 +137,7 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 					</nav>
 					<Button onClick={filterItems} className="archive__filter">
 						Filter
+						<FiRefreshCw />
 					</Button>
 				</nav>
 				<section className="archive__items">

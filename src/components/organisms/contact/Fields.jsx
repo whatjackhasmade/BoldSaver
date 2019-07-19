@@ -2,7 +2,7 @@ import React from "react";
 
 import ContactFormComponent from "./Fields-Styles";
 
-function ContactForm({
+const = ContactForm({
 	bot,
 	company,
 	email,
@@ -17,7 +17,7 @@ function ContactForm({
 	setFirstname,
 	setLastname,
 	setMessage
-}) {
+}) => {
 	return (
 		<ContactFormComponent
 			name="contact"

@@ -1,4 +1,5 @@
 import React from "react";
+import parse from "html-react-parser";
 
 import GridComponent from "./Grid-Styles";
 import { GridItemComponent } from "./Grid-Styles";
@@ -16,9 +17,7 @@ const Grid = () => {
 };
 
 const GridItem = ({ html, size }) => {
-	return (
-		<GridItemComponent dangerouslySetInnerHTML={{ __html: html }} size={size} />
-	);
+	return <GridItemComponent size={size}>{parse(html)}</GridItemComponent>;
 };
 
 export default Grid;

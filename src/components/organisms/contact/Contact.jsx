@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ContactForm from "./Fields";
 import ContactComponent from "./Contact-Styles";
 
-function Contact() {
+const Contact = () => {
 	const [bot, setBot] = useState("");
 	const [company, setCompany] = useState("");
 	const [email, setEmail] = useState("");
@@ -79,6 +79,6 @@ function Contact() {
 			</div>
 		</ContactComponent>
 	);
-}
+};
 
 export default Contact;

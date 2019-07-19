@@ -50,7 +50,7 @@ const Btn = styled.button`
 	}
 `;
 
-function Button({
+const Button = ({
 	className,
 	children,
 	disabled,
@@ -58,7 +58,7 @@ function Button({
 	onClick,
 	target,
 	type
-}) {
+}) => {
 	if (href) {
 		const BtnLink = Btn.withComponent("a");
 		return (
@@ -82,6 +82,6 @@ function Button({
 			{children}
 		</Btn>
 	);
-}
+};
 
 export default Button;

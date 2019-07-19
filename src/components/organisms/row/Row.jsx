@@ -1,11 +1,12 @@
 import React from "react";
+import parse from "html-react-parser";
 import { InView } from "react-intersection-observer";
 
 import RowComponent from "./RowStyles";
 
 import ImageLoader from "../../molecules/imageloader/ImageLoader";
 
-function Row({ data, index }) {
+const Row = ({ data, index }) => {
 	const { content, link, media } = data;
 
 	const alignment = index % 2 === 0 ? `left` : `right`;
@@ -47,19 +48,16 @@ function Row({ data, index }) {
 							<RowMedia media={mediaURL} ext={ext} />
 						)}
 					</div>
-					<div
-						className="row__column row__content"
-						dangerouslySetInnerHTML={{
-							__html: prepareContent(content)
-						}}
-					/>
+					<div className="row__column row__content">
+						{prepareContent(parse(content))}
+					</div>
 				</RowComponent>
 			)}
 		</InView>
 	);
-}
+};
 
-function RowMedia({ media, ext }) {
+const RowMedia = ({ media, ext }) => {
 	return (
 		<div className="row__media">
 			{ext !== `mp4` ? (
@@ -69,6 +67,6 @@ function RowMedia({ media, ext }) {
 			)}
 		</div>
 	);
-}
+};
 
 export default Row;

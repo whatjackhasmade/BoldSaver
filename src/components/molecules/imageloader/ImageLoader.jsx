@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LazyLoad from "react-lazy-load";
 
-function ImageLoader(props) {
+const ImageLoader = props => {
 	const [loaded, setLoaded] = useState(false);
 
 	const _loaded = {};
@@ -33,6 +33,6 @@ function ImageLoader(props) {
 			/>
 		</LazyLoad>
 	);
-}
+};
 
 export default ImageLoader;

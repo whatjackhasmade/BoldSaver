@@ -1,4 +1,5 @@
 import React from "react";
+import parse from "html-react-parser";
 
 import HeroComponent from "./HeroStyles";
 import HeroMediaComponent from "./HeroMediaStyles";
@@ -24,10 +25,7 @@ const Hero = ({ children, data }) => {
 		<HeroComponent background={background} overlay={overlayBoolean}>
 			<div className="hero__wrapper">
 				{content ? (
-					<div
-						className="hero__contents"
-						dangerouslySetInnerHTML={{ __html: content }}
-					/>
+					<div className="hero__contents">{parse(content)}</div>
 				) : (
 					<div className="hero__contents">{children}</div>
 				)}

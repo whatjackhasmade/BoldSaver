@@ -16,3 +16,5 @@ const Four0Four = () => {
 		</Base>
 	);
 };
+
+export default Four0Four;

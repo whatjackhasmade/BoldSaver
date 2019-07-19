@@ -9,3 +9,5 @@ const Index = () => {
 		</Base>
 	);
 };
+
+export default Index;

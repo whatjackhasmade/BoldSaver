@@ -369,39 +369,23 @@ const GlobalStyle = createGlobalStyle`
 	}
 `;
 
-export default class Base extends React.Component {
-	componentDidMount() {
-		if (navigator.serviceWorker) {
-			navigator.serviceWorker
-				.getRegistrations()
-				.then(registrations => {
-					for (let registration of registrations) {
-						registration.unregister();
-					}
-				})
-				.catch(function(err) {
-					console.log("Service Worker registration failed: ", err);
-				});
-		}
-	}
+const Base = ({ children, context, cta }) => {
+	return (
+		<ThemeProvider theme={ThemeDefault}>
+			<React.Fragment>
+				<GlobalStyle />
+				<Helmet title={config.siteTitle} />
+				<SEO data={context} />
+				<div className="wrapper">
+					<Header />
+					<main>{children}</main>
+					{cta !== false && <Contact />}
+					<Footer />
+				</div>
+			</React.Fragment>
+		</ThemeProvider>
+	);
+};
 
-	render() {
-		return (
-			<ThemeProvider theme={ThemeDefault}>
-				<React.Fragment>
-					<GlobalStyle />
-					<Helmet title={config.siteTitle} />
-					<SEO data={this.props.context} />
-					<div className="wrapper">
-						<Header />
-						<main>{this.props.children}</main>
-						{this.props.cta !== false && <Contact />}
-						<Footer />
-					</div>
-				</React.Fragment>
-			</ThemeProvider>
-		);
-	}
-}
-
+export default Base;
 export { GlobalStyle };

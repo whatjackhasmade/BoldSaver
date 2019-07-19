@@ -2,24 +2,24 @@ const fetch = require(`node-fetch`);
 const crypto = require(`crypto`);
 const path = require(`path`);
 
-const WordPressDomain = `https://wjhm.noface.app`;
+const APIDomain = `https://boldsaver-api.herokuapp.com/`;
 
 exports.sourceNodes = async (
 	{ actions: { createNode }, createNodeId },
 	{ plugins, ...options }
 ) => {
-	const pagesURL = `${WordPressDomain}/wp-json/pages/v2/all`;
-	const pagesResponse = await fetch(pagesURL);
-	const pagesData = await pagesResponse.json();
+	const techURL = `${APIDomain}?type=tech`;
+	const techResponse = await fetch(techURL);
+	const techData = await techResponse.json();
 
-	pagesData.forEach(e => {
+	techData.forEach(e => {
 		createNode({
 			...e,
-			id: createNodeId(`page-${e.id}`),
+			id: createNodeId(`deal-${e.id}`),
 			parent: null,
 			children: [],
 			internal: {
-				type: "Page",
+				type: "Deal",
 				content: JSON.stringify(e),
 				contentDigest: crypto
 					.createHash("md5")

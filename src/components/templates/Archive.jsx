@@ -123,12 +123,33 @@ const spring = {
 	stiffness: 400
 };
 
+function isFloat(val) {
+	val = parseFloat(val);
+	if (isNaN(val)) return false;
+	return true;
+}
+
 const ArchiveTemplate = ({ data, pageContext }) => {
 	// const { category, price, title, url } = pageContext;
+	const allDeals = data.allDeal.nodes;
 
 	// TODO: Refactor state in favour of context
-	const [deals, setDeals] = useState(data.allDeal.nodes);
+	const [deals, setDeals] = useState(allDeals);
 	const [isFiltered, setFiltered] = useState(false);
+
+	const mostExpensive = allDeals.reduce((p, c) =>
+		isFloat(p.price) && p.price > c.price ? p.price : c.price
+	);
+	const leastExpensive = allDeals.reduce((p, c) =>
+		isFloat(p.price) && p.price < c.price ? p.price : c.price
+	);
+	const [maxPrice, setMaxPrice] = useState(mostExpensive);
+	const [minPrice, setMinPrice] = useState(leastExpensive);
+
+	const filterItems = () => {
+		setDeals(isFiltered ? allDeals : allDeals.filter((item, i) => i % 2));
+		setFiltered(!isFiltered);
+	};
 
 	return (
 		<Base context={pageContext}>
@@ -142,10 +163,14 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 					</Heading>
 				</header>
 				<Filters
+					mostExpensive={mostExpensive}
+					leastExpensive={leastExpensive}
 					data={data}
-					isFiltered={isFiltered}
-					setDeals={setDeals}
-					setFiltered={setFiltered}
+					minPrice={minPrice}
+					setMinPrice={setMinPrice}
+					maxPrice={maxPrice}
+					setMaxPrice={setMaxPrice}
+					filterItems={filterItems}
 				/>
 				<section className="archive__items">
 					<AnimatePresence>
@@ -168,21 +193,15 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 	);
 };
 
-const Filters = ({ data, isFiltered, setDeals, setFiltered }) => {
-	const mostExpensive = 999;
-	const leastExpensive = 0;
-	const [maxPrice, setMaxPrice] = useState(mostExpensive);
-	const [minPrice, setMinPrice] = useState(leastExpensive);
-
-	const filterItems = () => {
-		setDeals(
-			isFiltered
-				? data.allDeal.nodes
-				: data.allDeal.nodes.filter((item, i) => i % 2)
-		);
-		setFiltered(!isFiltered);
-	};
-
+const Filters = ({
+	mostExpensive,
+	leastExpensive,
+	setMinPrice,
+	setMaxPrice,
+	minPrice,
+	maxPrice,
+	filterItems
+}) => {
 	return (
 		<nav className="archive__filters">
 			<FiSliders />

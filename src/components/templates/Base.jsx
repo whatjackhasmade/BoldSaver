@@ -7,6 +7,7 @@ import config from "../../../data/SiteConfig";
 
 import { device } from "../particles/MediaQueries";
 import { ThemeDefault } from "../particles/ThemeDefault";
+import Fonts from "../particles/Fonts";
 // import SEO from "../particles/SEO";
 
 import Footer from "../organisms/footer/Footer";
@@ -19,7 +20,23 @@ if (typeof window !== "undefined") {
 }
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
+	@font-face {
+		font-family: 'Poppins';
+		src: local('Poppins Regular'), local('Poppins-Regular'),
+			url(${Fonts.PoppinsRegularWOFF2}) format('woff2'), /* Super Modern Browsers */
+			url(${Fonts.PoppinsRegularWOFF}) format('woff'); /* Pretty Modern Browsers */
+		font-style: normal;
+		font-weight: normal;
+	}
+
+		@font-face {
+		font-family: 'Poppins';
+		src: local('Poppins Bold'), local('Poppins-Bold'),
+			url(${Fonts.PoppinsBoldWOFF2}) format('woff2'), /* Super Modern Browsers */
+			url(${Fonts.PoppinsBoldWOFF}) format('woff'); /* Pretty Modern Browsers */
+		font-style: normal;
+		font-weight: 700;
+	}
 
 	html {
 		box-sizing: border-box;

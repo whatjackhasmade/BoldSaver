@@ -155,14 +155,64 @@ const HeaderComponent = styled.header`
 	}
 
 	.header__search {
-		height: 44px;
 		flex-grow: 1;
 		margin: 0 96px;
-		padding: 8px 16px;
+		position: relative;
 
-		background: ${props => props.theme.white};
+		input {
+			height: 44px;
+			flex-grow: 1;
+			padding: 8px 16px;
+			width: 100%;
+
+			background: ${props => props.theme.white};
+			border: none;
+			border-radius: 4px;
+		}
+
+		&:focus-within {
+			.header__search__results {
+				display: block;
+			}
+		}
+	}
+
+	.header__search__results {
+		display: none;
+		left: 0;
+		margin: 0;
+		position: absolute;
+		top: 100%;
+		width: 100%;
+
+		background-color: ${props => props.theme.white};
 		border: none;
-		border-radius: 4px;
+		list-style: none;
+
+		a {
+			display: block;
+			padding: 8px 16px;
+
+			background-color: ${props => props.theme.white};
+			color: ${props => props.theme.black};
+			transition: 0.2s background-color ease;
+
+			&:active,
+			&:focus,
+			&:hover {
+				background-color: ${props => props.theme.offWhite};
+			}
+
+			+ a {
+				margin-left: 0;
+
+				border-top: 1px solid ${props => props.theme.grey100};
+			}
+
+			&:last-of-type() {
+				border-radius: 0 0 4px 4px;
+			}
+		}
 	}
 `;
 

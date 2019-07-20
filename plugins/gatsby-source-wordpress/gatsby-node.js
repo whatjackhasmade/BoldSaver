@@ -29,6 +29,27 @@ exports.sourceNodes = async (
 			}
 		});
 	});
+
+	const travelURL = `${APIDomain}?category=travel`;
+	const travelResponse = await fetch(travelURL);
+	const travelData = await travelResponse.json();
+
+	travelData.forEach(e => {
+		createNode({
+			...e,
+			id: createNodeId(`deal-${e.id}`),
+			parent: null,
+			children: [],
+			internal: {
+				type: "Deal",
+				content: JSON.stringify(e),
+				contentDigest: crypto
+					.createHash("md5")
+					.update(JSON.stringify(e))
+					.digest("hex")
+			}
+		});
+	});
 };
 
 const createThePages = true;

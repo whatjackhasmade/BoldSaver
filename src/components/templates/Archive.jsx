@@ -123,30 +123,21 @@ const spring = {
 	stiffness: 400
 };
 
-function isFloat(val) {
-	val = parseFloat(val);
-	if (isNaN(val)) return false;
-	return true;
-}
-
 const ArchiveTemplate = ({ data, pageContext }) => {
 	// const { category, price, title, url } = pageContext;
-	const allDeals = data.allDeal.nodes;
+	const allDeals = data.allDeal.nodes.sort((a, b) => a.price - b.price);
+	const leastExpensive = allDeals[0].price;
+	const mostExpensive = allDeals[allDeals.length - 1].price;
 
 	// TODO: Refactor state in favour of context
 	const [deals, setDeals] = useState(allDeals);
 	const [isFiltered, setFiltered] = useState(false);
-
-	const mostExpensive = allDeals.reduce((p, c) =>
-		isFloat(p.price) && p.price > c.price ? p.price : c.price
-	);
-	const leastExpensive = allDeals.reduce((p, c) =>
-		isFloat(p.price) && p.price < c.price ? p.price : c.price
-	);
 	const [maxPrice, setMaxPrice] = useState(mostExpensive);
 	const [minPrice, setMinPrice] = useState(leastExpensive);
 
 	const filterItems = () => {
+		console.log({ minPrice });
+		console.log({ maxPrice });
 		setDeals(isFiltered ? allDeals : allDeals.filter((item, i) => i % 2));
 		setFiltered(!isFiltered);
 	};
@@ -212,26 +203,27 @@ const Filters = ({
 					min={leastExpensive}
 					name="minPrice"
 					type="range"
+					step="0.5"
 					onChange={e => {
-						setMinPrice(e.target.value);
+						setMinPrice(parseFloat(e.target.value).toFixed(2));
 					}}
 					value={minPrice}
 				/>
-				<label for="minPrice">Min Price: £{minPrice}</label>
+				<label htmlFor="minPrice">Min Price: £{minPrice}</label>
 			</nav>
 			<nav className="archive__filters__max">
 				<input
 					id="maxPrice"
 					max={mostExpensive}
-					min={leastExpensive}
+					min={minPrice}
 					name="maxPrice"
 					type="range"
 					onChange={e => {
-						setMaxPrice(e.target.value);
+						setMaxPrice(parseFloat(e.target.value).toFixed(2));
 					}}
 					value={maxPrice}
 				/>
-				<label for="maxPrice">Max Price: £{maxPrice}</label>
+				<label htmlFor="maxPrice">Max Price: £{maxPrice}</label>
 			</nav>
 			<Button onClick={filterItems} className="archive__filter">
 				Filter
@@ -247,10 +239,7 @@ const Deal = ({ category, position, price, slug, title }) => {
 	return (
 		<>
 			<Link to={`/${slug}`} className="product__image">
-				<img
-					src={`https://source.unsplash.com/300x5${size}/?paris`}
-					alt={title}
-				/>
+				<img alt={title} src="https://dummyimage.com/300x400.jpg?text=Deal" />
 			</Link>
 			<Link to={`/${slug}`}>
 				<Heading level="3" visual="5">

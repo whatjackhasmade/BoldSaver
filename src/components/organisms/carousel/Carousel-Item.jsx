@@ -30,7 +30,7 @@ function truncate(str, len = 40, append) {
 	return tempString;
 }
 
-const CarouselItem = ({ background, price, slug, title }) => {
+const CarouselItem = ({ background, image, price, slug, title }) => {
 	return (
 		<CarouselItemComponent background={background} className="carousel__item">
 			<Link to={`/${slug}`} className="carousel__item__content">

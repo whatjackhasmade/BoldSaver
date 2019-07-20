@@ -22,7 +22,11 @@ const Carousel = ({ items = [] }) => {
 				<Slider {...settings}>
 					{items.map((item, i) => (
 						<CarouselItem
-							background={`https://source.unsplash.com/300x50${i}/?paris`}
+							background={
+								item.image
+									? item.image
+									: `https://source.unsplash.com/300x50${i}/?paris`
+							}
 							key={`carousel-item-${i}`}
 							{...item}
 						/>

@@ -65,6 +65,7 @@ if (createThePages) {
 							node {
 								id
 								category
+								image
 								price
 								slug
 								title

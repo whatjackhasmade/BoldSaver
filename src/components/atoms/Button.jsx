@@ -5,10 +5,10 @@ const Btn = styled.button`
 	display: inline-flex;
 	padding: 16px 24px;
 
-	background-color: ${props => props.theme.primary};
+	background-color: ${props => props.theme.purple};
 	border: none;
 	box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-	color: ${props => props.theme.black};
+	color: ${props => props.theme.white};
 	cursor: pointer;
 	font-weight: 700;
 	line-height: 1;
@@ -28,8 +28,8 @@ const Btn = styled.button`
 	}
 
 	&.active {
-		background: ${props => props.theme.primary};
-		color: white;
+		background-color: ${props => props.theme.purple};
+		color: ${props => props.theme.white};
 	}
 
 	&.secondary {
@@ -39,13 +39,13 @@ const Btn = styled.button`
 		&:active,
 		&:hover,
 		&:focus {
-			background: ${props => props.theme.secondary};
-			color: white;
+			background-color: ${props => props.theme.secondary};
+			color: ${props => props.theme.white};
 		}
 
 		&.active {
-			background: ${props => props.theme.secondary};
-			color: white;
+			background-color: ${props => props.theme.secondary};
+			color: ${props => props.theme.white};
 		}
 	}
 

@@ -12,8 +12,13 @@ import Heading from "../atoms/Heading";
 const ProductTemplateWrapper = styled.section`
 	margin: 64px 0;
 
+	article {
+		max-width: 900px;
+	}
+
 	h1 {
-		max-width: 50ch;
+		max-width: 900px;
+		line-height: 1.35;
 	}
 
 	.product__breadcrumbs {
@@ -45,7 +50,7 @@ const ProductTemplateWrapper = styled.section`
 `;
 
 const ProductTemplate = ({ pageContext }) => {
-	const { category, price, title, url } = pageContext;
+	const { category, image, price, title, url } = pageContext;
 
 	return (
 		<Base context={pageContext}>
@@ -62,7 +67,26 @@ const ProductTemplate = ({ pageContext }) => {
 						{formatMoney(price)}
 					</Heading>
 				</header>
-				<Button href={url}>Claim Product</Button>
+				{image && <img src={image} alt={title} />}
+				<article>
+					<p>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam
+						alias inventore error nihil eligendi omnis est similique distinctio
+						fuga architecto nam quibusdam nisi facere assumenda, vel odio. A,
+						expedita natus?
+					</p>
+					<p>
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident,
+						maxime praesentium possimus adipisci aliquid, nemo laborum illum
+						laudantium magnam quam explicabo veniam facere? Earum, velit. Omnis
+						tempore accusantium dolorum autem.
+					</p>
+					<div>
+						<Button href={url} target="_blank">
+							Claim Product
+						</Button>
+					</div>
+				</article>
 			</ProductTemplateWrapper>
 		</Base>
 	);

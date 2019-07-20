@@ -20,11 +20,11 @@ const Header = () => {
 				</Link>
 				<Search />
 				<nav className={menuOpen ? `header__menu--show` : null}>
-					<Link to="/music">Music</Link>
-					<Link to="/getaways">Getaways</Link>
-					<Link to="/events">Events</Link>
+					<Link to="/category/music">Music</Link>
+					<Link to="/category/travel">Getaways</Link>
+					<Link to="/category/events">Events</Link>
 					<Link to="/ideas">Gift Ideas</Link>
-					<Link to="/codes">Discount Codes</Link>
+					<Link to="/category/codes">Discount Codes</Link>
 				</nav>
 				<button onClick={() => toggleMenu(!menuOpen)}>
 					<span>{menuOpen ? `Close` : `Open`} Menu</span>

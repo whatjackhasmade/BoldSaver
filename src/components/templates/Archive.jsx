@@ -59,7 +59,7 @@ const ArchiveTemplateWrapper = styled.section`
 	.archive__items {
 		display: grid;
 		grid-gap: 48px;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 	}
 
 	.product {
@@ -233,13 +233,16 @@ const Filters = ({
 	);
 };
 
-const Deal = ({ category, position, price, slug, title }) => {
+const Deal = ({ category, image, position, price, slug, title }) => {
 	const size = Math.floor(Math.random() * 89) + 10;
 
 	return (
 		<>
 			<Link to={`/${slug}`} className="product__image">
-				<img alt={title} src="https://dummyimage.com/300x400.jpg?text=Deal" />
+				<img
+					alt={title}
+					src={image ? image : `https://dummyimage.com/300x400.jpg?text=Deal`}
+				/>
 			</Link>
 			<Link to={`/${slug}`}>
 				<Heading level="3" visual="5">
@@ -266,6 +269,7 @@ export const query = graphql`
 			nodes {
 				id
 				category
+				image
 				price
 				slug
 				title

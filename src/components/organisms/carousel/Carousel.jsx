@@ -20,7 +20,7 @@ const Carousel = ({ items = [] }) => {
 		<CarouselComponent>
 			<div className="carousel__contents">
 				<Slider {...settings}>
-					{items.map((item, i) => (
+					{items.slice(9).map((item, i) => (
 						<CarouselItem
 							background={
 								item.image

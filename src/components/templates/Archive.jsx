@@ -22,15 +22,26 @@ const ArchiveTemplateWrapper = styled.section`
 	.archive__filters {
 		align-items: flex-start;
 		display: flex;
-		justify-content: flex-end;
+		flex-direction: column;
+		justify-content: flex-start;
 		margin: 32px auto;
 		padding: 32px 0;
 
 		border-bottom: 1px solid ${props => props.theme.grey200};
 		border-top: 1px solid ${props => props.theme.grey200};
 
+		@media ${device.sm} {
+			flex-direction: row;
+			justify-content: flex-end;
+		}
+
 		> * + * {
-			margin-left: 32px;
+			margin-top: 32px;
+
+			@media ${device.sm} {
+				margin-left: 32px;
+				margin-top: 0;
+			}
 		}
 
 		label {
@@ -48,7 +59,13 @@ const ArchiveTemplateWrapper = styled.section`
 	.archive__header {
 		margin: 0;
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
+		justify-content: flex-start;
+
+		@media ${device.sm} {
+			flex-direction: row;
+			justify-content: space-between;
+		}
 
 		h1,
 		h2 {

@@ -4,11 +4,11 @@ import parse from "html-react-parser";
 import GridComponent from "./Grid-Styles";
 import { GridItemComponent } from "./Grid-Styles";
 
-const Grid = ({ items = [] }) => {
+const Grid = ({ align, items = [] }) => {
 	if (!items.length > 0) return null;
 
 	return (
-		<GridComponent>
+		<GridComponent align={align}>
 			{items.map((item, i) => (
 				<GridItem html={item.html} key={`grid-item-${i}`} size={item.size}>
 					{item.content}

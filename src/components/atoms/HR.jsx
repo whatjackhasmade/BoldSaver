@@ -20,12 +20,14 @@ const HRComponent = styled.hr`
 		margin: 48px auto;
 	}
 
-	@media ${device.xl} {
-		margin: 64px auto;
-	}
+	.carousel + & {
+		@media ${device.xl} {
+			margin: 64px auto;
+		}
 
-	@media ${device.xxl} {
-		margin: 80px auto;
+		@media ${device.xxl} {
+			margin: 80px auto;
+		}
 	}
 `;
 

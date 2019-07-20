@@ -35,6 +35,7 @@ const CarouselItemComponent = styled.div`
 			rgba(0, 0, 0, 0) 3%,
 			rgb(0, 0, 0) 100%
 		);
+		border-radius: 0 0 5px 5px;
 	}
 
 	> * {

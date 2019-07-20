@@ -234,18 +234,6 @@ const GlobalStyle = createGlobalStyle`
 	.slick-dots li button {
 		box-shadow: none !important;
 	}
-
-	.slick-arrow {
-		display: none !important;
-	}
-
-	.mailtoui-button-copy {
-		align-items: center;
-
-		> * {
-			top: auto;
-		}
-	}
 `;
 
 const Base = ({ children, context, cta }) => {

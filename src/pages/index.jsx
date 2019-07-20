@@ -1,5 +1,4 @@
 import React from "react";
-import { graphql } from "gatsby";
 
 import PhotographMan from "./hero-man.jpg";
 

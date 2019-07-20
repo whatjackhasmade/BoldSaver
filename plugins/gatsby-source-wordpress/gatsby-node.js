@@ -18,6 +18,9 @@ exports.sourceNodes = async (
 		});
 	allDeals = Array.prototype.concat.apply([], allDeals);
 
+	const posts = await fetch(`https://wjhm.noface.app/wp-json/posts/v2/all`);
+	const allPosts = await posts.json();
+
 	allDeals.forEach(e => {
 		createNode({
 			...e,
@@ -26,6 +29,23 @@ exports.sourceNodes = async (
 			children: [],
 			internal: {
 				type: "Deal",
+				content: JSON.stringify(e),
+				contentDigest: crypto
+					.createHash("md5")
+					.update(JSON.stringify(e))
+					.digest("hex")
+			}
+		});
+	});
+
+	allPosts.forEach(e => {
+		createNode({
+			...e,
+			id: createNodeId(`post-${e.id}`),
+			parent: null,
+			children: [],
+			internal: {
+				type: "Post",
 				content: JSON.stringify(e),
 				contentDigest: crypto
 					.createHash("md5")
@@ -57,6 +77,21 @@ if (createThePages) {
 							}
 						}
 					}
+					allPost {
+						edges {
+							node {
+								id
+								content
+								date
+								slug
+								title
+								yoast {
+									description
+									image
+								}
+							}
+						}
+					}
 				}
 			`).then(result => {
 				let dealCategories = result.data.allDeal.edges.map(
@@ -85,6 +120,17 @@ if (createThePages) {
 						}
 					});
 				});
+
+				result.data.allPost.edges.forEach(({ node }) => {
+					createPage({
+						path: `/post/${node.slug}`,
+						component: path.resolve(`./src/components/templates/Post.jsx`),
+						context: {
+							...node
+						}
+					});
+				});
+
 				resolve();
 			});
 		});

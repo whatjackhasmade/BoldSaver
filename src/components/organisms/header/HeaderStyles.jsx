@@ -7,6 +7,7 @@ const HeaderComponent = styled.header`
 
 	background: ${props => props.theme.black};
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+	font-family: "Poppins", sans-serif;
 
 	a {
 		font-size: 20px;

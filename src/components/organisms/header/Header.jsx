@@ -41,8 +41,8 @@ const Header = () => {
 			url: "/ideas"
 		},
 		{
-			title: "Discount Codes",
-			url: "/category/codes"
+			title: "Bold Blogs",
+			url: "/posts"
 		}
 	];
 	const [menuOpen, toggleMenu] = useState(false);

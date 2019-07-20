@@ -153,8 +153,6 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 	const [minPrice, setMinPrice] = useState(leastExpensive);
 
 	const filterItems = () => {
-		console.log({ minPrice });
-		console.log({ maxPrice });
 		setDeals(isFiltered ? allDeals : allDeals.filter((item, i) => i % 2));
 		setFiltered(!isFiltered);
 	};
@@ -251,8 +249,6 @@ const Filters = ({
 };
 
 const Deal = ({ category, image, position, price, slug, title }) => {
-	const size = Math.floor(Math.random() * 89) + 10;
-
 	return (
 		<>
 			<Link to={`/${slug}`} className="product__image">

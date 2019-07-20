@@ -52,12 +52,8 @@ const FooterComponent = styled.footer`
 		justify-content: space-between;
 		margin: 0 auto;
 		max-width: 1506px;
-		padding: 30px 15px;
+		padding: 30px;
 		width: 100%;
-
-		@media ${device.xs} {
-			padding: 30px;
-		}
 
 		@media ${device.md} {
 			padding: 90px 30px;
@@ -71,6 +67,11 @@ const FooterComponent = styled.footer`
 	.footer__info {
 		align-items: flex-start;
 		display: flex;
+		flex-direction: column;
+
+		@media ${device.sm} {
+			flex-direction: row;
+		}
 
 		p {
 			margin: 0;
@@ -82,9 +83,17 @@ const FooterComponent = styled.footer`
 		align-items: flex-start;
 		display: flex;
 		flex-direction: column;
-		margin: 0 auto;
+		flex-shrink: 0;
+		margin: 32px 0;
+
+		@media ${device.sm} {
+			margin: 0 auto;
+			padding: 0 32px;
+		}
 
 		a {
+			flex-shrink: 0;
+
 			+ a {
 				margin-top: 8px;
 			}
@@ -92,26 +101,41 @@ const FooterComponent = styled.footer`
 	}
 
 	.footer__policies {
+		align-items: flex-start;
+		flex-direction: column;
 		justify-content: flex-start;
 		margin-top: 32px;
 
+		@media ${device.sm} {
+			flex-direction: row;
+		}
+
 		> * {
 			+ * {
-				margin-left: 16px;
+				margin-top: 16px;
+
+				@media ${device.sm} {
+					margin-left: 16px;
+					margin-top: 0;
+				}
 			}
 		}
 	}
 
 	.footer__social {
+		flex-shrink: 0;
 		justify-content: flex-start;
 		width: 100%;
 
 		font-size: 0px;
 
+		@media ${device.sm} {
+			width: auto;
+		}
+
 		@media ${device.md} {
 			justify-content: center;
 			margin-top: 0;
-			width: auto;
 		}
 
 		a {

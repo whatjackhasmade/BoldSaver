@@ -3,38 +3,22 @@ const crypto = require(`crypto`);
 const path = require(`path`);
 
 // const APIDomain = `https://boldsaver-api.herokuapp.com/`
-const APIDomain = `http://localhost:5000/`;
+const APIDomain = `http://localhost:5000/?category=`;
+
+const urls = [`${APIDomain}music`, `${APIDomain}tech`, `${APIDomain}travel`];
 
 exports.sourceNodes = async (
 	{ actions: { createNode }, createNodeId },
 	{ plugins, ...options }
 ) => {
-	const techURL = `${APIDomain}?category=tech`;
-	const techResponse = await fetch(techURL);
-	const techData = await techResponse.json();
-
-	techData.forEach(e => {
-		createNode({
-			...e,
-			id: createNodeId(`deal-${e.id}`),
-			parent: null,
-			children: [],
-			internal: {
-				type: "Deal",
-				content: JSON.stringify(e),
-				contentDigest: crypto
-					.createHash("md5")
-					.update(JSON.stringify(e))
-					.digest("hex")
-			}
+	let allDeals = await Promise.all(urls.map(url => fetch(url)))
+		.then(async resp => await Promise.all(resp.map(r => r.json())))
+		.then(result => {
+			return result;
 		});
-	});
+	allDeals = Array.prototype.concat.apply([], allDeals);
 
-	const travelURL = `${APIDomain}?category=travel`;
-	const travelResponse = await fetch(travelURL);
-	const travelData = await travelResponse.json();
-
-	travelData.forEach(e => {
+	allDeals.forEach(e => {
 		createNode({
 			...e,
 			id: createNodeId(`deal-${e.id}`),

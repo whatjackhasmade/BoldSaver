@@ -52,7 +52,7 @@ export default () => (
 			return (
 				<form onSubmit={handleSubmit} className="header__search">
 					<input
-						autocomplete="new-password"
+						autoComplete="new-password"
 						name="searchQuery"
 						id="searchQuery"
 						onChange={inputChange}

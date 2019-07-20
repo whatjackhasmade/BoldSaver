@@ -1,35 +1,95 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
-
-import HeaderComponent from "./HeaderStyles";
+import { FiMenu, FiX } from "react-icons/fi";
 
 import Logo from "../../../assets/images/logo/logo.svg";
-import IconBars from "../../../assets/images/icons/solid/bars.svg";
-import IconTimes from "../../../assets/images/icons/solid/times.svg";
 
 import Search from "./Search";
 
+import HeaderComponent from "./HeaderStyles";
+
+const disableScroll = action => {
+	const bodyElement = document.querySelector(`html`);
+	const mq = window.matchMedia(`(max-width: 992px)`);
+	if (mq.matches) {
+		if (bodyElement) {
+			if (action === "remove") {
+				bodyElement.classList.remove(`scroll--fixed`);
+			} else {
+				bodyElement.classList.toggle(`scroll--fixed`);
+			}
+		}
+	}
+};
+
 const Header = () => {
+	const menuItems = [
+		{
+			title: "Music",
+			url: "/category/music"
+		},
+		{
+			title: "Getaways",
+			url: "/category/travel"
+		},
+		{
+			title: "Events",
+			url: "/category/events"
+		},
+		{
+			title: "Gift Ideas",
+			url: "/ideas"
+		},
+		{
+			title: "Discount Codes",
+			url: "/category/codes"
+		}
+	];
 	const [menuOpen, toggleMenu] = useState(false);
 
 	return (
 		<HeaderComponent>
-			<div className="header__contents">
-				<Link to="/" className="header__logo">
+			<div
+				className={
+					menuOpen
+						? `header__contents header__contents--show`
+						: `header__contents`
+				}
+			>
+				<Link
+					to="/"
+					onClick={() => {
+						disableScroll("remove");
+						toggleMenu(false);
+					}}
+					className="header__logo"
+				>
 					<Logo />
 				</Link>
 				<Search />
 				<nav className={menuOpen ? `header__menu--show` : null}>
-					<Link to="/category/music">Music</Link>
-					<Link to="/category/travel">Getaways</Link>
-					<Link to="/category/events">Events</Link>
-					<Link to="/ideas">Gift Ideas</Link>
-					<Link to="/category/codes">Discount Codes</Link>
+					{menuItems.map(item => (
+						<Link
+							key={`header-item-${item.title}`}
+							to={item.url}
+							onClick={() => {
+								disableScroll();
+							}}
+						>
+							{item.title}
+						</Link>
+					))}
 				</nav>
-				<button onClick={() => toggleMenu(!menuOpen)}>
+				<button
+					onClick={e => {
+						e.preventDefault();
+						toggleMenu(!menuOpen);
+						disableScroll();
+					}}
+				>
 					<span>{menuOpen ? `Close` : `Open`} Menu</span>
 					<span> Navigation</span>
-					{menuOpen ? <IconTimes /> : <IconBars />}
+					{menuOpen ? <FiX /> : <FiMenu />}
 				</button>
 			</div>
 		</HeaderComponent>

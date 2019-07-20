@@ -2,7 +2,6 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 
 import Carousel from "../../components/organisms/carousel/Carousel";
-import Hero from "../../components/organisms/hero/Hero";
 import Grid from "../../components/organisms/grid/Grid";
 
 const musicIntro = [

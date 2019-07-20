@@ -31,11 +31,15 @@ const HeaderComponent = styled.header`
 		padding: 8px;
 		position: relative;
 
-		color: ${props => props.theme.white};
+		color: ${props => props.theme.black};
 		font-weight: 500;
 		text-decoration: none;
 		text-transform: capitalize;
 		transition: 0.2s all ease;
+
+		@media ${device.sm} {
+			color: ${props => props.theme.white};
+		}
 
 		& + a[aria-current="page"],
 		&:active,
@@ -62,7 +66,7 @@ const HeaderComponent = styled.header`
 
 		background: none;
 		border: none;
-		color: inherit;
+		color: ${props => props.theme.white};
 		cursor: pointer;
 		outline: none;
 		transform: translateX(8px);
@@ -85,6 +89,8 @@ const HeaderComponent = styled.header`
 		svg {
 			margin-left: 8px;
 			height: 20px;
+
+			fill: currentColor;
 		}
 
 		@media ${device.sm} {
@@ -109,21 +115,30 @@ const HeaderComponent = styled.header`
 		justify-content: space-between;
 		margin: 0 auto;
 		max-width: 1506px;
-		padding: 7px 30px;
+		padding: 15px 30px 15px 15px;
+	}
 
-		@media ${device.sm} {
-			padding: 15px 30px;
+	.header__contents--show {
+		.header__logo {
+			svg {
+				fill: ${props => props.theme.black};
+			}
 		}
 	}
 
 	.header__logo {
-		&:after {
-			display: none;
-		}
+		z-index: 2;
 
 		svg {
 			display: block;
-			height: 20px;
+			height: 15px;
+
+			@media ${device.xs} {
+				height: 20px;
+			}
+
+			fill: ${props => props.theme.white};
+			transition: 0.2s all ease;
 		}
 	}
 
@@ -154,10 +169,27 @@ const HeaderComponent = styled.header`
 		}
 	}
 
+	.header__menu--show + button {
+		color: ${props => props.theme.black};
+	}
+
 	.header__search {
+		display: none;
 		flex-grow: 1;
-		margin: 0 96px;
+		margin: 0 24px;
 		position: relative;
+
+		@media ${device.md} {
+			display: block;
+		}
+
+		@media ${device.lg} {
+			margin: 0 48px;
+		}
+
+		@media ${device.xl} {
+			margin: 0 96px;
+		}
 
 		input {
 			height: 44px;

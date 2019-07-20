@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import { Link } from "gatsby";
 import styled from "styled-components";

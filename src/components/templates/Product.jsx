@@ -39,12 +39,23 @@ const ProductTemplateWrapper = styled.section`
 
 	.product__header {
 		display: flex;
+		flex-direction: column-reverse;
 		justify-content: space-between;
 		width: 100%;
+
+		@media ${device.sm} {
+			flex-direction: row;
+		}
 
 		h1,
 		h2 {
 			margin-top: 0;
+		}
+
+		h2 {
+			@media ${device.sm} {
+				padding-left: 48px;
+			}
 		}
 	}
 `;

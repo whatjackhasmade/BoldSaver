@@ -7,7 +7,6 @@ import Grid from "../../components/organisms/grid/Grid";
 
 const techIntro = [
 	{
-		// content: "Heading",
 		html: `<h2>Trending Tech Products We Think You'll Love</h2><p>The primary aim of the project is to conceptualise, design and then develop an online deal aggregator website, implementing modern strategic thinking models, bleeding-edge technologies and innovate upon existing products and their solutions to consumer-focused problems. The final output will be a complete brand guideline, website prototype, website design, and a fully developed website application that displays the latest product and service deals from around the world wide web.</p>`,
 		size: 8
 	}

@@ -25,16 +25,16 @@ const disableScroll = action => {
 const Header = () => {
 	const menuItems = [
 		{
-			title: "Music",
-			url: "/category/music"
+			title: "Tech",
+			url: "/category/tech"
 		},
 		{
 			title: "Getaways",
 			url: "/category/travel"
 		},
 		{
-			title: "Events",
-			url: "/category/events"
+			title: "Music Events",
+			url: "/category/music"
 		},
 		{
 			title: "Gift Ideas",

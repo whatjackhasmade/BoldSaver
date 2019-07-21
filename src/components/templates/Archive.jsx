@@ -168,7 +168,7 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 						{deals.length} Deals Found
 					</Heading>
 				</header>
-				<Filters
+				{/* <Filters
 					mostExpensive={mostExpensive}
 					leastExpensive={leastExpensive}
 					data={data}
@@ -177,7 +177,7 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 					maxPrice={maxPrice}
 					setMaxPrice={setMaxPrice}
 					filterItems={filterItems}
-				/>
+				/> */}
 				<section className="archive__items">
 					<AnimatePresence>
 						{deals.map((deal, i) => (

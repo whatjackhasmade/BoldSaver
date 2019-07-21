@@ -18,7 +18,7 @@ exports.sourceNodes = async (
 		});
 	allDeals = Array.prototype.concat.apply([], allDeals);
 
-	const posts = await fetch(`https://wjhm.noface.app/wp-json/posts/v2/all`);
+	const posts = await fetch(`http://boldsaver.local/wp-json/posts/v2/all`);
 	const allPosts = await posts.json();
 
 	allDeals.forEach(e => {

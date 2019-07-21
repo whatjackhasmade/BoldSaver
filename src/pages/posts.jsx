@@ -113,53 +113,6 @@ const PostsGrid = styled.section`
 		padding: 64px 30px;
 		width: 100%;
 	}
-
-	.duotone {
-		--base: ${props => props.theme.primary};
-		--bg-blend: multiply;
-		--blur: 0px;
-		--fg-blend: lighten;
-		--foreground: #000000;
-		--opacity: 1;
-
-		background-color: var(--base);
-		display: flex;
-		flex: 1 1 100%;
-		height: 100%;
-		overflow: hidden;
-		position: relative;
-		width: 100%;
-
-		img {
-			filter: grayscale(100%) contrast(1) blur(var(--blur));
-			flex: 1 0 100%;
-			height: 100%;
-			max-width: 100%;
-			mix-blend-mode: var(--bg-blend);
-			object-fit: cover;
-			opacity: var(--opacity);
-			position: relative;
-			width: 100%;
-
-			transition: 0.4s all ease;
-		}
-
-		&::before {
-			background-color: var(--foreground);
-			bottom: 0;
-			content: "";
-			height: 100%;
-			left: 0;
-			mix-blend-mode: var(--fg-blend);
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 100%;
-			z-index: 1;
-
-			transition: 0.4s all ease;
-		}
-	}
 `;
 
 export default () => (
@@ -181,7 +134,7 @@ export default () => (
 			}
 		`}
 		render={data => (
-			<Base>
+			<Base page="posts">
 				<Hero background={PhotographMan}>
 					<Heading level="1" visual="2">
 						BoldSaver Blog Posts
@@ -210,9 +163,7 @@ const Article = ({
 	yoast
 }) => (
 	<Link className="post" to={`/post/${slug}`}>
-		<div className="duotone">
-			<img src={yoast.image ? yoast.image : image} alt={title} />
-		</div>
+		<img src={yoast.image ? yoast.image : image} alt={title} />
 		<div className="post__content">
 			<Heading level="2" visual="3">
 				{title}

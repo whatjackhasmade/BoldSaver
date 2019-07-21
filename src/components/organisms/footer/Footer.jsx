@@ -22,17 +22,30 @@ const Footer = () => {
 						and Affordable Gifts.
 					</p>
 					<nav className="footer__navigation">
-						<Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
-						<Link to="/privacy-policy">Privacy Policy</Link>
+						<Link to="/">Homepage</Link>
+						<Link to="/">Deals</Link>
+						<Link to="/posts">Bold Blog Posts</Link>
 					</nav>
 					<nav className="footer__social">
-						<a href="https://github.com/whatjackhasmade">
+						<a
+							href="https://facebook.com/boldsaver"
+							rel="noopener noreferrer"
+							target="_blank"
+						>
 							<IconFacebook /> Facebook
 						</a>
-						<a href="https://twitter.com/instagram">
+						<a
+							href="https://instagram.com/boldsaver"
+							rel="noopener noreferrer"
+							target="_blank"
+						>
 							<IconInstagram /> Instagram
 						</a>
-						<a href="https://twitter.com/whatjackhasmade">
+						<a
+							href="https://twitter.com/boldsaver"
+							rel="noopener noreferrer"
+							target="_blank"
+						>
 							<IconTwitter /> Twitter
 						</a>
 					</nav>

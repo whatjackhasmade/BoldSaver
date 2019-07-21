@@ -9,6 +9,10 @@ const FooterComponent = styled.footer`
 	background: ${props => props.theme.grey900};
 	color: ${props => props.theme.white};
 
+	.wrapper--posts & {
+		margin-top: 0;
+	}
+
 	a {
 		color: ${props => props.theme.white};
 		font-weight: 400;

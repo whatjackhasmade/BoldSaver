@@ -9,12 +9,9 @@ import Base from "./Base";
 import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
 
-const ProductTemplateWrapper = styled.section`
-	margin: 64px 0;
-
-	article {
-		max-width: 900px;
-	}
+const ProductTemplateWrapper = styled.article`
+	margin: 64px auto;
+	max-width: 1100px;
 
 	h1 {
 		max-width: 900px;
@@ -79,25 +76,23 @@ const ProductTemplate = ({ pageContext }) => {
 					</Heading>
 				</header>
 				{image && <img src={image} alt={title} />}
-				<article>
-					<p>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam
-						alias inventore error nihil eligendi omnis est similique distinctio
-						fuga architecto nam quibusdam nisi facere assumenda, vel odio. A,
-						expedita natus?
-					</p>
-					<p>
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident,
-						maxime praesentium possimus adipisci aliquid, nemo laborum illum
-						laudantium magnam quam explicabo veniam facere? Earum, velit. Omnis
-						tempore accusantium dolorum autem.
-					</p>
-					<div>
-						<Button href={url} target="_blank">
-							Claim Product
-						</Button>
-					</div>
-				</article>
+				<p>
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam alias
+					inventore error nihil eligendi omnis est similique distinctio fuga
+					architecto nam quibusdam nisi facere assumenda, vel odio. A, expedita
+					natus?
+				</p>
+				<p>
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident,
+					maxime praesentium possimus adipisci aliquid, nemo laborum illum
+					laudantium magnam quam explicabo veniam facere? Earum, velit. Omnis
+					tempore accusantium dolorum autem.
+				</p>
+				<div>
+					<Button href={url} target="_blank">
+						Claim Product
+					</Button>
+				</div>
 			</ProductTemplateWrapper>
 		</Base>
 	);

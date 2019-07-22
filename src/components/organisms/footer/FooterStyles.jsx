@@ -60,7 +60,7 @@ const FooterComponent = styled.footer`
 		width: 100%;
 
 		@media ${device.md} {
-			padding: 90px 30px;
+			padding: 60px 30px;
 		}
 
 		& > * {
@@ -73,7 +73,7 @@ const FooterComponent = styled.footer`
 		display: flex;
 		flex-direction: column;
 
-		@media ${device.sm} {
+		@media ${device.md} {
 			flex-direction: row;
 		}
 
@@ -88,11 +88,21 @@ const FooterComponent = styled.footer`
 		display: flex;
 		flex-direction: column;
 		flex-shrink: 0;
-		margin: 32px 0;
+		margin: 16px 0;
 
-		@media ${device.sm} {
-			margin: 0 auto;
-			padding: 0 32px;
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin-top: 0;
+
+			font-size: 20px;
+		}
+
+		@media ${device.md} {
+			margin: 0 auto 0 0;
 		}
 
 		a {
@@ -129,6 +139,7 @@ const FooterComponent = styled.footer`
 	.footer__social {
 		flex-shrink: 0;
 		justify-content: flex-start;
+		margin-top: 32px;
 		width: 100%;
 
 		font-size: 0px;

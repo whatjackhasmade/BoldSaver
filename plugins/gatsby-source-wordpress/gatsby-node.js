@@ -2,15 +2,25 @@ const fetch = require(`node-fetch`);
 const crypto = require(`crypto`);
 const path = require(`path`);
 
-const APIDomain = `https://boldsaver-api.herokuapp.com/?category=`;
 // const APIDomain = `http://localhost:5000/?category=`;
 
+const SteamBigAPI = `https://store.steampowered.com/api/appdetails/?appids=`;
+
+const APIDomain = `https://boldsaver-api.herokuapp.com/?category=`;
 const urls = [`${APIDomain}music`, `${APIDomain}tech`, `${APIDomain}travel`];
 
 exports.sourceNodes = async (
 	{ actions: { createNode }, createNodeId },
 	{ plugins, ...options }
 ) => {
+	// Create Steam Games Products
+	var gameDeals = [];
+	for (i = 1; i < 200; i++) {
+		const gameReq = await fetch(`${SteamBigAPI}${i}`);
+		const response = await gameReq.json();
+		if (response[i].success) gameDeals.push(response[i].data);
+	}
+
 	let allDeals = await Promise.all(urls.map(url => fetch(url)))
 		.then(async resp => await Promise.all(resp.map(r => r.json())))
 		.then(result => {
@@ -20,6 +30,23 @@ exports.sourceNodes = async (
 
 	const posts = await fetch(`https://bold.noface.app/wp-json/posts/v2/all`);
 	const allPosts = await posts.json();
+
+	gameDeals.forEach(e => {
+		createNode({
+			...e,
+			id: createNodeId(`game-${e.id}`),
+			parent: null,
+			children: [],
+			internal: {
+				type: "Game",
+				content: JSON.stringify(e),
+				contentDigest: crypto
+					.createHash("md5")
+					.update(JSON.stringify(e))
+					.digest("hex")
+			}
+		});
+	});
 
 	allDeals.forEach(e => {
 		createNode({

@@ -9,9 +9,13 @@ export default () => (
 				allDeal {
 					nodes {
 						id
-						category
-						image
-						price
+						slug
+						title
+					}
+				}
+				allGame {
+					nodes {
+						id
 						slug
 						title
 					}
@@ -19,12 +23,13 @@ export default () => (
 			}
 		`}
 		render={data => {
-			const deals = data.allDeal.nodes;
+			const deals = [...data.allDeal.nodes, ...data.allGame.nodes];
+
 			var index = new FlexSearch({
 				preset: "score",
 				doc: {
 					id: "id",
-					field: ["title", "category"]
+					field: ["title"]
 				}
 			});
 
@@ -42,7 +47,7 @@ export default () => (
 			const inputChange = e => {
 				setQuery(e.target.value);
 				if (e.target.value.length > 2) {
-					const queryResults = index.search(query);
+					const queryResults = index.search(e.target.value);
 					setResults(queryResults);
 				} else {
 					setResults([]);

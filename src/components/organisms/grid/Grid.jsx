@@ -4,8 +4,12 @@ import parse from "html-react-parser";
 import GridComponent from "./Grid-Styles";
 import { GridItemComponent } from "./Grid-Styles";
 
-const Grid = ({ align, items = [] }) => {
-	if (!items.length > 0) return null;
+const Grid = ({ align, children, items = [] }) => {
+	if (!items.length > 0 && !children) return null;
+
+	if (children) {
+		return <GridComponent align={align}>{children}</GridComponent>;
+	}
 
 	return (
 		<GridComponent align={align}>
@@ -27,3 +31,5 @@ const GridItem = ({ children, html, size }) => {
 };
 
 export default Grid;
+export { GridComponent };
+export { GridItem };

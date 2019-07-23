@@ -3,9 +3,9 @@ import React from "react";
 import HeroComponent from "./HeroStyles";
 import HeroMediaComponent from "./HeroMediaStyles";
 
-const Hero = ({ background, children }) => {
+const Hero = ({ background, children, text }) => {
 	return (
-		<HeroComponent>
+		<HeroComponent text={text}>
 			<div className="hero__wrapper">
 				<div className="hero__contents">{children}</div>
 			</div>

@@ -36,22 +36,17 @@ const settings = {
 	]
 };
 
-const Carousel = ({ items = [] }) => {
+const Carousel = ({ items = [], type }) => {
 	return (
 		<CarouselComponent className="carousel">
 			<div className="carousel__contents">
 				<Slider {...settings}>
-					{items.slice(9).map((item, i) => (
+					{items.slice(0, 9).map((item, i) => (
 						<CarouselItem
-							background={
-								item.image
-									? item.image
-									: `https://source.unsplash.com/300x50${i}/?${
-											item.title.split(" ")[0]
-									  }`
-							}
-							key={`carousel-item-${i}`}
 							{...item}
+							background={item.image ? item.image : ""}
+							key={`carousel-item-${i}`}
+							type={type}
 						/>
 					))}
 				</Slider>

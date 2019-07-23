@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { device } from "../particles/MediaQueries";
-import { FiRefreshCw, FiSliders } from "react-icons/fi";
 import { formatMoney } from "../helpers";
 
 import Base from "./Base";
 
-import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
 
 const ArchiveTemplateWrapper = styled.section`
@@ -141,21 +139,7 @@ const spring = {
 };
 
 const ArchiveTemplate = ({ data, pageContext }) => {
-	// const { category, price, title, url } = pageContext;
-	const allDeals = data.allDeal.nodes.sort((a, b) => a.price - b.price);
-	const leastExpensive = allDeals[0].price;
-	const mostExpensive = allDeals[allDeals.length - 1].price;
-
-	// TODO: Refactor state in favour of context
-	const [deals, setDeals] = useState(allDeals);
-	const [isFiltered, setFiltered] = useState(false);
-	const [maxPrice, setMaxPrice] = useState(mostExpensive);
-	const [minPrice, setMinPrice] = useState(leastExpensive);
-
-	const filterItems = () => {
-		setDeals(isFiltered ? allDeals : allDeals.filter((item, i) => i % 2));
-		setFiltered(!isFiltered);
-	};
+	const deals = data.allDeal.nodes.sort((a, b) => a.price - b.price);
 
 	return (
 		<Base context={pageContext}>
@@ -168,16 +152,6 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 						{deals.length} Deals Found
 					</Heading>
 				</header>
-				{/* <Filters
-					mostExpensive={mostExpensive}
-					leastExpensive={leastExpensive}
-					data={data}
-					minPrice={minPrice}
-					setMinPrice={setMinPrice}
-					maxPrice={maxPrice}
-					setMaxPrice={setMaxPrice}
-					filterItems={filterItems}
-				/> */}
 				<section className="archive__items">
 					<AnimatePresence>
 						{deals.map((deal, i) => (
@@ -196,55 +170,6 @@ const ArchiveTemplate = ({ data, pageContext }) => {
 				</section>
 			</ArchiveTemplateWrapper>
 		</Base>
-	);
-};
-
-const Filters = ({
-	mostExpensive,
-	leastExpensive,
-	setMinPrice,
-	setMaxPrice,
-	minPrice,
-	maxPrice,
-	filterItems
-}) => {
-	return (
-		<nav className="archive__filters">
-			<FiSliders />
-			<nav className="archive__filters__min">
-				<input
-					id="minPrice"
-					max={mostExpensive}
-					min={leastExpensive}
-					name="minPrice"
-					type="range"
-					step="0.5"
-					onChange={e => {
-						setMinPrice(parseFloat(e.target.value).toFixed(2));
-					}}
-					value={minPrice}
-				/>
-				<label htmlFor="minPrice">Min Price: £{minPrice}</label>
-			</nav>
-			<nav className="archive__filters__max">
-				<input
-					id="maxPrice"
-					max={mostExpensive}
-					min={minPrice}
-					name="maxPrice"
-					type="range"
-					onChange={e => {
-						setMaxPrice(parseFloat(e.target.value).toFixed(2));
-					}}
-					value={maxPrice}
-				/>
-				<label htmlFor="maxPrice">Max Price: £{maxPrice}</label>
-			</nav>
-			<Button onClick={filterItems} className="archive__filter">
-				Filter
-				<FiRefreshCw />
-			</Button>
-		</nav>
 	);
 };
 

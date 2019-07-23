@@ -1,8 +1,17 @@
 const fetch = require(`node-fetch`);
 const crypto = require(`crypto`);
 const path = require(`path`);
+const fs = require("fs");
+const slug = require("slug");
 
-// const APIDomain = `http://localhost:5000/?category=`;
+slug.defaults.modes["rfc3986"] = {
+	replacement: "-", // replace spaces with replacement
+	symbols: true, // replace unicode symbols or not
+	remove: null, // (optional) regex to remove characters
+	lower: true, // result in lower case
+	charmap: slug.charmap, // replace special characters
+	multicharmap: slug.multicharmap // replace multi-characters
+};
 
 const SteamBigAPI = `https://store.steampowered.com/api/appdetails/?appids=`;
 
@@ -14,12 +23,22 @@ exports.sourceNodes = async (
 	{ plugins, ...options }
 ) => {
 	// Create Steam Games Products
+	const top100 = await fetch(
+		`https://steamspy.com/api.php?request=top100in2weeks`
+	);
+	const top100Res = await top100.json();
+	const top100Array = Object.keys(top100Res).map((key, index) => {
+		return key;
+	});
+
 	var gameDeals = [];
-	for (i = 1; i < 200; i++) {
-		const gameReq = await fetch(`${SteamBigAPI}${i}`);
+	top100Array.map(async id => {
+		const gameReq = await fetch(`${SteamBigAPI}${id}`);
 		const response = await gameReq.json();
-		if (response[i].success) gameDeals.push(response[i].data);
-	}
+		if (response && response[id] && response[id].success) {
+			gameDeals.push(response[id].data);
+		}
+	});
 
 	let allDeals = await Promise.all(urls.map(url => fetch(url)))
 		.then(async resp => await Promise.all(resp.map(r => r.json())))
@@ -32,9 +51,11 @@ exports.sourceNodes = async (
 	const allPosts = await posts.json();
 
 	gameDeals.forEach(e => {
+		e = { ...e, slug: slug(e.name), title: e.name };
+
 		createNode({
 			...e,
-			id: createNodeId(`game-${e.id}`),
+			id: createNodeId(`game-${e.steam_appid}`),
 			parent: null,
 			children: [],
 			internal: {
@@ -104,6 +125,28 @@ if (createThePages) {
 							}
 						}
 					}
+					allGame {
+						edges {
+							node {
+								about_the_game
+								header_image
+								price_overview {
+									currency
+									discount_percent
+									initial
+									final
+								}
+								screenshots {
+									path_full
+									path_thumbnail
+								}
+								short_description
+								slug
+								steam_appid
+								title
+							}
+						}
+					}
 					allPost {
 						edges {
 							node {
@@ -142,6 +185,16 @@ if (createThePages) {
 					createPage({
 						path: node.slug,
 						component: path.resolve(`./src/components/templates/Product.jsx`),
+						context: {
+							...node
+						}
+					});
+				});
+
+				result.data.allGame.edges.forEach(({ node }) => {
+					createPage({
+						path: node.slug,
+						component: path.resolve(`./src/components/templates/Game.jsx`),
 						context: {
 							...node
 						}

@@ -37,7 +37,7 @@ const Footer = ({ data }) => {
 			<div className="footer__contents">
 				<section className="footer__info">
 					<nav className="footer__navigation">
-						<Heading level="3" style="5">
+						<Heading level="3" visual="5">
 							BoldSaver
 						</Heading>
 						<Link to="/category/tech">Tech</Link>
@@ -47,7 +47,7 @@ const Footer = ({ data }) => {
 						<Link to="/posts">Bold Blogs</Link>
 					</nav>
 					<nav className="footer__navigation">
-						<Heading level="3" style="5">
+						<Heading level="3" visual="5">
 							Blog Posts
 						</Heading>
 						{data.allPost.nodes.map((post, i) => (
@@ -57,7 +57,7 @@ const Footer = ({ data }) => {
 						))}
 					</nav>
 					<nav className="footer__navigation">
-						<Heading level="3" style="5">
+						<Heading level="3" visual="5">
 							Discover
 						</Heading>
 						<Link to="/">Homepage</Link>

@@ -10,7 +10,7 @@ const CarouselItemComponent = styled.div`
 	position: relative;
 
 	background-color: #c4c4c4;
-	background-image: url(${props => props.background});
+	background-image: url(${props => (props.background ? props.background : "")});
 	background-position: center;
 	background-size: cover;
 	border-radius: 5px;
@@ -59,6 +59,12 @@ const CarouselItemComponent = styled.div`
 
 	.carousel__item__content {
 		margin-top: auto;
+
+		&:active,
+		&:focus,
+		&:hover {
+			text-decoration: none;
+		}
 	}
 
 	.carousel__item__subheading {

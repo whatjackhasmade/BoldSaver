@@ -13,7 +13,8 @@ const HeroComponent = styled.section`
 
 	background: ${props =>
 		props.background ? props.background : props.theme.primary};
-	color: ${props => props.theme.black};
+	color: ${props =>
+		props.text === "light" ? props.theme.white : props.theme.black};
 
 	@supports (margin-left: -50vw) {
 		height: auto;

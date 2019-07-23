@@ -1,61 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "styled-components";
-import { device } from "../particles/MediaQueries";
 import { formatMoney } from "../helpers";
 
 import Base from "./Base";
+import ProductTemplateWrapper from "./parts/ProductTemplateWrapper";
 
 import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
-
-const ProductTemplateWrapper = styled.article`
-	margin: 64px auto;
-	max-width: 1100px;
-
-	h1 {
-		max-width: 900px;
-		line-height: 1.35;
-	}
-
-	.product__breadcrumbs {
-		margin: 0 0 24px;
-
-		color: ${props => props.theme.grey600};
-		text-transform: capitalize;
-
-		a {
-			margin-left: 4px;
-			margin-right: 4px;
-
-			&:first-of-type {
-				margin-left: 0;
-			}
-		}
-	}
-
-	.product__header {
-		display: flex;
-		flex-direction: column-reverse;
-		justify-content: space-between;
-		width: 100%;
-
-		@media ${device.sm} {
-			flex-direction: row;
-		}
-
-		h1,
-		h2 {
-			margin-top: 0;
-		}
-
-		h2 {
-			@media ${device.sm} {
-				padding-left: 48px;
-			}
-		}
-	}
-`;
 
 const ProductTemplate = ({ pageContext }) => {
 	const { category, image, price, title, url } = pageContext;

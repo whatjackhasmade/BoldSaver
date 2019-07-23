@@ -19,8 +19,6 @@ const spring = {
 const GamesCategoryPage = ({ data, pageContext }) => {
 	const deals = data.allGame.nodes.sort((a, b) => a.price - b.price);
 
-	console.log({ deals });
-
 	return (
 		<Base context={pageContext}>
 			<ArchiveTemplateWrapper>

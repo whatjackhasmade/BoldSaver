@@ -21,8 +21,6 @@ const GameTemplate = ({ pageContext }) => {
 		title
 	} = pageContext;
 
-	console.log(pageContext);
-
 	return (
 		<Base context={pageContext}>
 			<ProductTemplateWrapper>

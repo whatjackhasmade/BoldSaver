@@ -217,3 +217,4 @@ export const query = graphql`
 `;
 
 export default ArchiveTemplate;
+export { ArchiveTemplateWrapper };

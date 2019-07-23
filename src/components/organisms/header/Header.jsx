@@ -37,8 +37,8 @@ const Header = () => {
 			url: "/category/music"
 		},
 		{
-			title: "Gift Ideas",
-			url: "/ideas"
+			title: "Games",
+			url: "/category/games"
 		},
 		{
 			title: "Bold Blogs",

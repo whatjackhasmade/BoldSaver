@@ -43,7 +43,7 @@ const Footer = ({ data }) => {
 						<Link to="/category/tech">Tech</Link>
 						<Link to="/category/travel">Getaways</Link>
 						<Link to="/category/events">Music Events</Link>
-						<Link to="/ideas">Gift Ideas</Link>
+						<Link to="/category/games">Games</Link>
 						<Link to="/posts">Bold Blogs</Link>
 					</nav>
 					<nav className="footer__navigation">
